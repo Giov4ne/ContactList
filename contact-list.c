@@ -107,7 +107,7 @@ void printContacts(Contact contacts[], int qty){
             printf("========= Contato %d =========\n", contacts[i].id);
             printf("Nome: %s\n", contacts[i].name);
             printf("Telefone: %s\n", contacts[i].phone);
-            printf("Tipo: %s", contacts[i].type == 1 ? "Pessoal\n\n" : "Trabalho\n\n");
+            printf("Tipo: %s", contacts[i].type == PERSONAL ? "Pessoal\n\n" : "Trabalho\n\n");
         }
     } else{
         printf("Nenhum contato cadastrado ate o momento!!\n");
@@ -129,7 +129,7 @@ void findContact(Contact contacts[], int qty){
             printf("\n========= Contato %d =========\n", contacts[index].id);
             printf("Nome: %s\n", contacts[index].name);
             printf("Telefone: %s\n", contacts[index].phone);
-            printf("Tipo: %s", contacts[index].type == 1 ? "Pessoal\n\n" : "Trabalho\n\n");
+            printf("Tipo: %s", contacts[index].type == PERSONAL ? "Pessoal\n\n" : "Trabalho\n\n");
         } else{
             printf("Nao ha nenhum contato cadastrado com este telefone!!\n");
         }
@@ -237,10 +237,10 @@ void updateContact(Contact contacts[], int qty){
                         break;
                     }
                     case 3:
-                        printf("\nTipo de contato atual: %s", contacts[index].type == 1 ? "Pessoal\n" : "Trabalho\n");
+                        printf("\nTipo de contato atual: %s", contacts[index].type == PERSONAL ? "Pessoal\n" : "Trabalho\n");
                         int typeOption;
                         do{
-                            printf("Trocar tipo de contato para %s?\n", contacts[index].type == 1 ? "Trabalho" : "Pessoal");
+                            printf("Trocar tipo de contato para %s?\n", contacts[index].type == PERSONAL ? "Trabalho" : "Pessoal");
                             printf("1- Sim\n");
                             printf("2- Nao\n");
                             printf("Opcao: ");
@@ -250,7 +250,7 @@ void updateContact(Contact contacts[], int qty){
                             }
                         } while (typeOption < 1 || typeOption > 2);
                         if(typeOption == 1){
-                            contacts[index].type = contacts[index].type == 1 ? 2 : 1;
+                            contacts[index].type = contacts[index].type == PERSONAL ? WORK : PERSONAL;
                             printf("Tipo de contato alterado com sucesso!!\n");
                         } else{
                             printf("Edicao cancelada!!\n");
